@@ -488,7 +488,7 @@ class CustomInlineFormSetMixin:
 
         order_field_value = getattr(obj, self.default_order_field, None)
         # Fix for broke sort on new Inlines
-        if order_field_value is None or order_field_value >= 0:
+        if order_field_value is None or order_field_value <= 0:
             max_order = self.get_max_order()
             setattr(obj, self.default_order_field, max_order + 1)
         if commit:
